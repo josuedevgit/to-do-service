@@ -2,6 +2,8 @@ package com.josue.todoservice.controller;
 
 import com.josue.todoservice.model.TaskModel;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -31,5 +33,21 @@ public class TaskController {
                     "Data de vencimento: " + expirationDate +
                     "Está concluída? " + isDone;
         }
-    }   
+    }
+
+
+    // problemas com relação à adicionar
+    @PostMapping("/tasks/add")
+    public void addTask(@RequestBody String id, String description, String expirationDate) {
+        TaskModel task = createTask(id, description, expirationDate);
+        taskList.add(task);
+    }
+
+
+    // metodo para instanciar TaskModel
+    public TaskModel createTask(String id, String description, String expirationDate) {
+        TaskModel task = new TaskModel(id, description, expirationDate);
+
+        return task;
+    }
 }
