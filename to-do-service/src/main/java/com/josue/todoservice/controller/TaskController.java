@@ -1,10 +1,7 @@
 package com.josue.todoservice.controller;
 
 import com.josue.todoservice.model.TaskModel;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,28 +23,30 @@ public class TaskController {
                 description = task.getDescription();
                 expirationDate = task.getExpirationDate();
                 isDone = task.isDone();
+                System.out.println("ID: " + id);
+                System.out.println("Descrição: " + id);
+                System.out.println("Data de vencimento: " + id);
+                System.out.println("Está concluído? " + id);
+                System.out.println("======================");
             }
 
-            return "ID: " + id +
-                    "Descrição: " + description +
-                    "Data de vencimento: " + expirationDate +
-                    "Está concluída? " + isDone;
+            return "ID: " + id;
         }
     }
 
-
-    // problemas com relação à adicionar
     @PostMapping("/tasks/add")
     public void addTask(@RequestBody String id, String description, String expirationDate) {
-        TaskModel task = createTask(id, description, expirationDate);
-        taskList.add(task);
-    }
-
-
-    // metodo para instanciar TaskModel
-    public TaskModel createTask(String id, String description, String expirationDate) {
         TaskModel task = new TaskModel(id, description, expirationDate);
-
-        return task;
+        taskList.add(task);
+        System.out.println("Tarefa adicionada!");
     }
+
+//    @PutMapping("/tasks/edit/{taskId}")
+//    public void editTask(@PathVariable String taskId, @RequestBody TaskModel task) {
+//        for (TaskModel taskItem : taskList) {
+//            if(taskItem.getId().equals(taskId)) {
+//                taskItemtask.getId();
+//            }
+//        }
+//    }
 }
