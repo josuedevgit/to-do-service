@@ -24,9 +24,9 @@ public class TaskController {
                 expirationDate = task.getExpirationDate();
                 isDone = task.isDone();
                 System.out.println("ID: " + id);
-                System.out.println("Descrição: " + id);
-                System.out.println("Data de vencimento: " + id);
-                System.out.println("Está concluído? " + id);
+                System.out.println("Descrição: " + description);
+                System.out.println("Data de vencimento: " + expirationDate);
+                System.out.println("Está concluído? " + isDone);
                 System.out.println("======================");
             }
 
